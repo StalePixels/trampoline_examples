@@ -3,7 +3,7 @@ TRAMPOLINE ~~MATHS~~ EXAMPLES
 
 A functional example of how to put executable code into "demand paged" banks,
 letting you break up your application into discrete chunks and therefore have
-much bigger overall binaries.
+much bigger overall binaries with z88dk.
 
 Please note this is not the only way to do things, this example has been made to
 serve two purposes:
