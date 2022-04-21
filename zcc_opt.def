@@ -7,6 +7,14 @@ IF !DEFINED_startup
 ENDIF
 
 
+IF !DEFINED_startupoffset
+	defc	DEFINED_startupoffset = 1
+	defc startupoffset = 768
+	IFNDEF startupoffset
+	ENDIF
+ENDIF
+
+
 IF !DEFINED_REGISTER_SP 
 	defc	DEFINED_REGISTER_SP  = 1
 	defc REGISTER_SP  = 0xbfe0
