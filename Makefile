@@ -30,10 +30,7 @@ default: all
 
 all: $(NAME)
 
-install: install_$(NAME)
-
-uninstall: uninstall_$(NAME)
-
+INSTALL_DIR = /Volumes/devnext.xalior.com
 
 dist_clean: clean
 	rm -f $(BUILD_DIR)/*
@@ -68,6 +65,7 @@ bank43/bin/%.o: bank43/%.asm bank43/inc/%.h
 		 	$< -c -o$@
 
 $(NAME)_bank_43_OBJS := \
+	bank43/build/log.o \
 	bank43/build/logic.o
 
 banks/$(NAME)bank_43.o: bank43_banner $($(NAME)_bank_43_OBJS)
@@ -225,3 +223,7 @@ nex: $($(NAME)_OBJS) main_banner
 	$(MV) $(NAME).nex $(BUILD_DIR)/
 
 $(NAME): dotn nex
+
+install:
+	$(CP) $(BUILD_DIR)/$(NAME).nex $(INSTALL_DIR)/TestFiles
+	$(CP) $(BUILD_DIR)/$(NAME) $(INSTALL_DIR)/dot

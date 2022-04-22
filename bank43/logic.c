@@ -6,6 +6,8 @@
 #include <stdlib.h>
 
 #include "inc/logic.h"
+#include "inc/log.h"
+
 #include "../inc/execfar.h"
 #include "../inc/trammath.h"
 #include "../bank47/inc/add_one.h"
@@ -32,7 +34,9 @@ void logic() {
      *
      */
     execfarWithUint16(add_one, param, 47<<1);
-    printf("b43.total:%d\n\n", total);
+
+    // Executing functions in the same bank can be handled completely normally...
+    log("total", total);
 
     /*
      * Execute function mul8bit(7), in bank45
@@ -43,7 +47,7 @@ void logic() {
      *
      */
     execfarWithUint8(mul8bit, 100, 45<<1);
-    printf("b43.total:%d\n\n", total);
+    log("total", total);
 
     /*
      * Execute function sub(9), in bank46
@@ -54,7 +58,7 @@ void logic() {
      *
      */
     execfarWithUint16(sub, 1104, 46<<1);
-    printf("b43.total:%d\n\n", total);
+    log("total", total);
 
     /*
      * Execute function div_two(param), in bank46
@@ -71,5 +75,5 @@ void logic() {
 
     // Don't leak memory!
     free(param);
-    printf("Logic done, exiting bank 43\n");
+    printf("BANK 43 DONE\n");
 }
